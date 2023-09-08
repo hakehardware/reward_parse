@@ -1,5 +1,5 @@
 # reward_parse
-Parses the accounts file to get rewards
+This parses the rewards from the state.sql file. There seems to be some limitation regarding how many records are stored in there. For coinbases with smaller nodes pointing at them it should be fine. But when querying the largest coinbases I'm only getting 137 or so records. 
 
 ## Install Dependencies
 ### Ubuntu Only
