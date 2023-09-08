@@ -96,46 +96,6 @@ def get_rewards(args, config):
 
     output_csv(csv_rewards, output, f"rewards_{coinbase}.csv")
 
-def main():
-    file_path = 'C:/Users/ajnab/AppData/Roaming/Spacemesh/accounts/sm1qqqqqqxgw2e4qw9q9gzyqmqu92u9t5p22k9p7rg82v9n4.json'
-    json_data = None
-    try:
-        with open(file_path, 'r') as file:
-            json_data = json.load(file)
-            # Now, json_data contains the content of the JSON file as a Python dictionary or list
-            
-    except FileNotFoundError:
-        print(f"File not found: {file_path}")
-    except json.JSONDecodeError:
-        print(f"Invalid JSON format in file: {file_path}")
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-
-
-    keys = []
-    for key in json_data:
-        keys.append(key)
-
-    rewards = json_data[keys[1]]["rewards"]
-    layers = []
-    for layer in rewards:
-        layers.append(layer)
-
-    print(f'You have {len(layers)} layers rewards.')
-
-    layer_rewards = ['Epoch', 'Layer', 'Amount']
-    for layer in layers:
-        epoch = int(layer) // 4032
-        amount = rewards[layer]["amount"]/1000000000
-        layer_rewards.append([epoch, layer, amount])
-
-    with open('output.csv', mode="w", newline="") as file:
-        # Use newline="" to ensure correct line endings on different platforms
-        writer = csv.writer(file)
-        
-        # Write the data to the CSV file
-        writer.writerows(layer_rewards)
-
 if __name__ == "__main__":
     args = parse_args()
     print(args)
