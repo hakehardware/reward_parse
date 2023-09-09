@@ -98,7 +98,6 @@ def get_rewards(args, config):
 
 if __name__ == "__main__":
     args = parse_args()
-    print(args)
     with open('config.json', 'r') as config_file:
         config = json.load(config_file)
 
